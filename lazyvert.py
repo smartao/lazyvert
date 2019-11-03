@@ -31,7 +31,7 @@ def lazyvert():
 
     videostemp = validaarquivo(videosfile)  # Validando e lendo o arquivo
 
-    print('Gerando acoes no padrao Todoist:')
+    print('Gerando ações no padrào Todoist')
     # Lendo todas as linhas do arquivo usando o loop
     with open(videostemp.name) as the_file:
         for line in the_file:
@@ -64,13 +64,14 @@ def lazyvert():
             urlfull = youtube_url+videoid
 
             # Imprimindo na tela o formatado final para o Todoist
-            print(f'{canal} `{minutos}:00` - [{titulo.title()}]({urlfull})')
+            # print(f'{canal} `{minutos}:00` - [{titulo.title()}]({urlfull})')
 
             # Copiando a saida para o clib board para o clipbard
             linha = (canal + " `" + minutos +
                      ":00` - [" + titulo.title() + "](" + urlfull + ")" + '\n')
             texto += linha  # Juntando as linhas em uma unica string
             pyperclip.copy(texto)  # Copiando texto para clipboard
+            print('Ações copiadas para área de tranferencia!\n')
 
 
 if __name__ == '__main__':
