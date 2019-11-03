@@ -3,7 +3,7 @@ import requests
 import json
 import errno
 import sys
-
+import pyperclip
 
 apigoogle = 'https://www.googleapis.com/youtube/v3/videos'
 youtube_url = 'https://www.youtube.com/watch?v='
@@ -25,6 +25,7 @@ def validaarquivo(file):
 
 def lazyvert():
     print('\n### Iniciando lazyvert.py ###\n')
+    texto = ''  # String vazia para usar no clipboard
     keytemp = validaarquivo(keyfile)  # Validando e lendo o arquivo
     key = keytemp.read()  # Passando o conteudo do arquivo para a variavel
 
@@ -64,6 +65,12 @@ def lazyvert():
 
             # Imprimindo na tela o formatado final para o Todoist
             print(f'{canal} `{minutos}:00` - [{titulo.title()}]({urlfull})')
+
+            # Copiando a saida para o clib board para o clipbard
+            linha = (canal + " `" + minutos +
+                     ":00` - [" + titulo.title() + "](" + urlfull + ")" + '\n')
+            texto += linha  # Juntando as linhas em uma unica string
+            pyperclip.copy(texto)  # Copiando texto para clipboard
 
 
 if __name__ == '__main__':
